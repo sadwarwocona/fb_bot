@@ -53,7 +53,7 @@ do
     fi
 
     if [[ "$cid" != "$grp" ]] && [[ "$txt" == "/start" ]] && ! grep -qx "$cid" ban; then
-      curl "$url/sendMessage?chat_id=$cid&text=Hi, I am a support bot. Send your question."
+      curl -s -G "$url/sendMessage" --data-urlencode "chat_id=$cid" --data-urlencode "text=Hi, I am a support bot. Send your question."
     fi
 
   done <<< "$ids"
